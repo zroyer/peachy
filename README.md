@@ -1,1 +1,1 @@
-## BTC Monitor
+## Peachy BTC Monitor
