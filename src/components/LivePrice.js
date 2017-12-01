@@ -28,6 +28,8 @@ class LivePrice extends React.Component {
     }
 
     this.fetchPrice();
+
+    // CoinDesk API refreshes every 90 seconds
     this.refresh = setInterval(() => this.fetchPrice(), 90000);
   }
 

@@ -1,4 +1,5 @@
 body {
+  font-family: 'Open Sans', sans-serif;
   background-color: #ffe6eb;
 }
 
@@ -13,14 +14,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+.price-headline {
+  font-size: 6em;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.last-updated-info {
+  font-size: 0.75em;
 }
