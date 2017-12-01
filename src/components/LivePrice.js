@@ -11,7 +11,7 @@ class LivePrice extends React.Component {
 
   componentDidMount() {
     this.fetchPrice = async () => {
-      const url = 'http://api.coindesk.com/v1/bpi/currentprice.json';
+      const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
       fetch(url)
         .then(response => response.json())
         .then((priceRes) => {
