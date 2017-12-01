@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import LivePrice from './components/LivePrice';
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
         <header className="App-header">
           <h1><span role="img" aria-labelledby="peach">🍑</span></h1>
         </header>
+        <LivePrice />
       </div>
     );
   }
