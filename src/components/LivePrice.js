@@ -1,4 +1,6 @@
 import React from 'react';
+import TimeAgo from 'react-timeago';
+import '../style/LivePrice.css';
 
 class LivePrice extends React.Component {
   constructor(props) {
@@ -15,8 +17,7 @@ class LivePrice extends React.Component {
       fetch(url)
         .then(response => response.json())
         .then((priceRes) => {
-          console.log('got the price');
-          console.log(priceRes);
+          console.log(priceRes.time.updated)
           this.setState({
             price: priceRes.bpi.USD.rate_float,
             lastUpdated: priceRes.time.updated,
@@ -29,12 +30,12 @@ class LivePrice extends React.Component {
 
     this.fetchPrice();
 
-    // CoinDesk API refreshes every 90 seconds
-    this.refresh = setInterval(() => this.fetchPrice(), 90000);
+    // the API updates every 90 seconds
+    this.refreshPrice = setInterval(() => this.fetchPrice(), 90000);
   }
 
   componentWillUnmount(){
-    clearInterval(this.refresh);
+    clearInterval(this.refreshPrice);
   }
 
   render() {
@@ -47,7 +48,7 @@ class LivePrice extends React.Component {
           })}
         </div>
         <div className='last-updated-info'>
-          (Last updated {this.state.lastUpdated})
+          Price updated <TimeAgo date={this.state.lastUpdated} unit="second" />
         </div>
       </div>
     )

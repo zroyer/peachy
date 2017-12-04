@@ -1,0 +1,11 @@
+#price-container {
+  padding: 1rem;
+}
+
+.price-headline {
+  font-size: 4em;
+}
+
+.last-updated-info {
+  font-size: 0.75em;
+}
