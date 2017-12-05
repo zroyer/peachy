@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import '../style/PriceChart.css';
+import CustomTooltip from './CustomTooltip'
 import {AreaChart, CartesianGrid, Area, XAxis, YAxis, Tooltip} from 'recharts';
 
 class PriceChart extends React.Component {
@@ -67,7 +68,7 @@ class PriceChart extends React.Component {
             tick={{ fontSize: 16 }}
             tickFormatter={this.priceFormatter}
             stroke="#808080" />
-          <Tooltip/>
+          <Tooltip content={<CustomTooltip />}/>
           <Area type="monotone" dataKey="price" stroke="#FFD6BF" fillOpacity={1} fill="url(#peachyGradient)"/>
         </AreaChart>
       </div>
