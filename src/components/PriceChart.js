@@ -38,7 +38,9 @@ class PriceChart extends React.Component {
   }
 
   priceFormatter(price) {
-    return '$'+(price/1000)+'k';
+    return (
+      '$'+(price/1000)+'k'
+    );
   }
 
   render() {
