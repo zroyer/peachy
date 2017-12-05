@@ -2,6 +2,13 @@ import React from 'react';
 import '../style/CustomTooltip.css';
 
 class CustomTooltip extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tooltipPrice: 0,
+    }
+  }
+
   propTypes: {
     type: PropTypes.string,
     payload: PropTypes.array,
@@ -12,10 +19,11 @@ class CustomTooltip extends React.Component {
     const { active } = this.props;
     if (active) {
       const { payload, label } = this.props;
+      this.state.tooltipPrice = payload[0].value.toFixed(2);
       return (
         <div className="custom-tooltip">
           <p className="label-date">{`${label}`}</p>
-          <p className="label-price">{`$${payload[0].value.toFixed(2)}`}</p>
+          <p className="label-price">${this.state.tooltipPrice}</p>
         </div>
       )
     }

@@ -27,8 +27,7 @@ class PriceChart extends React.Component {
           }
           this.setState({
             priceData: priceCalendar,
-          })
-          console.log(this.state)
+          });
         })
         .catch((e) => {
           console.log(e);
@@ -47,7 +46,7 @@ class PriceChart extends React.Component {
       <div className="price-chart-container">
       	<AreaChart
           width={900}
-          height={350}
+          height={400}
           data={this.state.priceData}>
           <defs>
             <linearGradient id="peachyGradient" x1="0" y1="0" x2="0" y2="1">
@@ -68,6 +67,7 @@ class PriceChart extends React.Component {
             tick={{ fontSize: 16 }}
             tickFormatter={this.priceFormatter}
             stroke="#808080" />
+          <CartesianGrid strokeDasharray="2 2" />
           <Tooltip content={<CustomTooltip />}/>
           <Area type="monotone" dataKey="price" stroke="#FFD6BF" fillOpacity={1} fill="url(#peachyGradient)"/>
         </AreaChart>
