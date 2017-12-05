@@ -25,7 +25,7 @@ class CustomTooltip extends React.Component {
           <p className="label-date">{`${label}`}</p>
           <p className="label-price">${this.state.tooltipPrice}</p>
         </div>
-      )
+      );
     }
     return null;
   }

@@ -55,7 +55,7 @@ class LivePrice extends React.Component {
           </a>
         </div>
       </div>
-    )
+    );
   }
 }
 
