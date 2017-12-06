@@ -17,7 +17,6 @@ class LivePrice extends React.Component {
       fetch(url)
         .then(response => response.json())
         .then((priceRes) => {
-          console.log(priceRes.time.updated)
           this.setState({
             price: priceRes.bpi.USD.rate_float,
             lastUpdated: priceRes.time.updated,

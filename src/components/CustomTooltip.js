@@ -19,13 +19,15 @@ class CustomTooltip extends React.Component {
     const { active } = this.props;
     if (active) {
       const { payload, label } = this.props;
-      this.state.tooltipPrice = payload[0].value.toFixed(2);
-      return (
-        <div className="custom-tooltip">
-          <p className="label-date">{`${label}`}</p>
-          <p className="label-price">${this.state.tooltipPrice}</p>
-        </div>
-      );
+      if (payload) {
+        this.state.tooltipPrice = payload[0].value.toFixed(2);
+        return (
+          <div className="custom-tooltip">
+            <p className="label-date">{`${label}`}</p>
+            <p className="label-price">${this.state.tooltipPrice}</p>
+          </div>
+        );
+      }      
     }
     return null;
   }
