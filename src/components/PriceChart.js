@@ -4,13 +4,15 @@ import '../style/PriceChart.css';
 import CustomTooltip from './CustomTooltip'
 import {AreaChart, CartesianGrid, Area, XAxis, YAxis, Tooltip} from 'recharts';
 
+const baseUrl = 'https://api.coindesk.com/v1/bpi/historical/close.json';
+
 class PriceChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       priceData: null,
-      selectedOption: 'option1',
-      url: 'https://api.coindesk.com/v1/bpi/historical/close.json'
+      selectedOption: '1month',
+      url: baseUrl
     }
 
     this.handleOptionChange.bind(this);
@@ -39,7 +41,6 @@ class PriceChart extends React.Component {
         this.setState({
           priceData: priceCalendar,
         });
-        console.log(this.state.priceData)
       })
       .catch((e) => {
         console.log(e);
@@ -90,37 +91,72 @@ class PriceChart extends React.Component {
           <div className="radio">
             <label>
               <input type="radio"
-                value="option1"
-                checked={this.state.selectedOption === 'option1'}
+                value="1month"
+                checked={this.state.selectedOption === '1month'}
                 onChange={this.handleOptionChange} />
-              Option 1
+              1 Month
             </label>
           </div>
           <div className="radio">
             <label>
               <input type="radio"
-                value="option2"
-                checked={this.state.selectedOption === 'option2'}
+                value="3month"
+                checked={this.state.selectedOption === '3month'}
                 onChange={this.handleOptionChange} />
-              Option 2
+              3 Months
+            </label>
+          </div>
+          <div className="radio">
+            <label>
+              <input type="radio"
+                value="1year"
+                checked={this.state.selectedOption === '1year'}
+                onChange={this.handleOptionChange} />
+              1 Year
+            </label>
+          </div>
+          <div className="radio">
+            <label>
+              <input type="radio"
+                value="3year"
+                checked={this.state.selectedOption === '3year'}
+                onChange={this.handleOptionChange} />
+              3 Years
             </label>
           </div>
         </div>
-        {this.state.selectedOption}
-        {this.state.url}
+
       </div>
     );
   }
 
   handleOptionChange = (e) => {
+    let selectedOption = e.target.value;
+
+
+    let url = baseUrl;
+
+    let today = moment().format('YYYY-MM-DD');
+    let teststring = `${baseUrl}`
+    console.log(teststring);
     const urlMap = {
-      'option1': 'https://api.coindesk.com/v1/bpi/historical/close.json',
-      'option2': 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2013-09-05'
+      '1month': 'https://api.coindesk.com/v1/bpi/historical/close.json',
+      '3month': 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2013-09-05'
     }
 
+    if (selectedOption === '3month') {
+      url += `?start=${moment().subtract(3, 'months').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
+    } else if (selectedOption === '1year') {
+      url += `?start=${moment().subtract(1, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
+    } else if (selectedOption === '3year') {
+      url += `?start=${moment().subtract(3, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
+    }
+
+
+
     this.setState({
-        selectedOption: e.target.value,
-        url: urlMap[e.target.value]
+        selectedOption: selectedOption,
+        url: url
     });
   }
 
