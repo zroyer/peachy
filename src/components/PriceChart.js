@@ -23,8 +23,24 @@ class PriceChart extends React.Component {
     this.fetchPriceData();
   }
 
-  componentDidUpdate() {
-    this.fetchPriceData();
+  handleOptionChange = (e) => {
+    let selectedOption = e.target.value;
+    let formattedUrl = baseUrl;
+
+    if (selectedOption === '3month') {
+      formattedUrl += `?start=${moment().subtract(3, 'months').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
+    } else if (selectedOption === '1year') {
+      formattedUrl += `?start=${moment().subtract(1, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
+    } else if (selectedOption === '3year') {
+      formattedUrl += `?start=${moment().subtract(3, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
+    }
+
+    this.setState({
+        selectedOption: selectedOption,
+        url: formattedUrl
+    }, function() {
+      this.fetchPriceData();
+    });
   }
 
   fetchPriceData() {
@@ -82,10 +98,15 @@ class PriceChart extends React.Component {
               stroke="#808080" />
             <CartesianGrid strokeDasharray="2 2" />
             <Tooltip content={<CustomTooltip />}/>
-            <Area type="monotone" dataKey="price" stroke="#FFD6BF" fillOpacity={1} fill="url(#peachyGradient)"/>
+            <Area
+              type="monotone"
+              dataKey="price"
+              stroke="#FFD6BF"
+              fillOpacity={1}
+              fill="url(#peachyGradient)"
+              isAnimationActive={false} />
           </AreaChart>
         </div>
-
 
         <div>
           <div className="radio">
@@ -125,39 +146,8 @@ class PriceChart extends React.Component {
             </label>
           </div>
         </div>
-
       </div>
     );
-  }
-
-  handleOptionChange = (e) => {
-    let selectedOption = e.target.value;
-
-
-    let url = baseUrl;
-
-    let today = moment().format('YYYY-MM-DD');
-    let teststring = `${baseUrl}`
-    console.log(teststring);
-    const urlMap = {
-      '1month': 'https://api.coindesk.com/v1/bpi/historical/close.json',
-      '3month': 'https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2013-09-05'
-    }
-
-    if (selectedOption === '3month') {
-      url += `?start=${moment().subtract(3, 'months').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
-    } else if (selectedOption === '1year') {
-      url += `?start=${moment().subtract(1, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
-    } else if (selectedOption === '3year') {
-      url += `?start=${moment().subtract(3, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
-    }
-
-
-
-    this.setState({
-        selectedOption: selectedOption,
-        url: url
-    });
   }
 
 }
