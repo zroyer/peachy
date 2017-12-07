@@ -27,7 +27,8 @@
 }
 
 .recharts-text.recharts-cartesian-axis-tick-value {
-  color: (0,0,0,0.65) !important;
+  color: rgba(0,0,0,0.65) !important;
+  fill: rgba(0,0,0,0.65) !important;
 }
 
 .ant-radio-button-wrapper.btn-timeframe:first-child {
