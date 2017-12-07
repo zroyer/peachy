@@ -91,7 +91,7 @@ class PriceChart extends React.Component {
             <XAxis
               dataKey="date"
               tickLine={false}
-              tick={{ fontSize: 14, dx: 21, dy: -15 }}
+              tick={{ fontSize: 14, dx: 21, dy: -20 }}
               angle={-45}
               height={40}
               orientation="top"
@@ -100,7 +100,7 @@ class PriceChart extends React.Component {
             <YAxis
               type="number"
               tickLine={false}
-              tick={{ fontSize: 16 }}
+              tick={{ fontSize: 16, dx: -5}}
               tickFormatter={this.priceFormatter}
               axisLine={false}
                />
