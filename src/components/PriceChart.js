@@ -75,22 +75,13 @@ class PriceChart extends React.Component {
   render() {
     return (
       <div className="price-chart-container">
-        <div className="timeframe-container">
-          <RadioGroup
-            onChange={this.handleOptionChange}
-            defaultValue={this.state.selectedOption}
-            className="radio-timeframe">
-            <RadioButton value="1month" className="btn-timeframe">1 Month</RadioButton>
-            <RadioButton value="3month" className="btn-timeframe">3 Months</RadioButton>
-            <RadioButton value="1year" className="btn-timeframe">1 Year</RadioButton>
-            <RadioButton value="3years" className="btn-timeframe">3 Years</RadioButton>
-          </RadioGroup>
-        </div>
         <div className="chart-container">
         	<AreaChart
-            width={800}
+            width={900}
             height={400}
+            margin={{ top: 20, right: 50, left: 50 }}
             data={this.state.priceData}>
+            cornerRadius={0}
             <defs>
               <linearGradient id="peachyGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#ffcba4" stopOpacity={0.9}/>
@@ -100,17 +91,20 @@ class PriceChart extends React.Component {
             <XAxis
               dataKey="date"
               tickLine={false}
-              tick={{ fontSize: 12, dy: 15 }}
+              tick={{ fontSize: 14, dx: 21, dy: -15 }}
               angle={-45}
               height={40}
+              orientation="top"
+              axisLine={false}
               />
             <YAxis
               type="number"
               tickLine={false}
               tick={{ fontSize: 16 }}
               tickFormatter={this.priceFormatter}
+              axisLine={false}
                />
-            <CartesianGrid strokeDasharray="2 2" />
+            <CartesianGrid strokeDasharray="3 3" />
             <Tooltip
               content={<CustomTooltip price={this.state.priceData}/>}
               price={this.state.priceData} />
@@ -122,6 +116,17 @@ class PriceChart extends React.Component {
               fill="url(#peachyGradient)"
               isAnimationActive={false} />
           </AreaChart>
+        </div>
+        <div className="timeframe-container">
+          <RadioGroup
+            onChange={this.handleOptionChange}
+            defaultValue={this.state.selectedOption}
+            className="radio-timeframe">
+            <RadioButton value="1month" className="btn-timeframe">1 Month</RadioButton>
+            <RadioButton value="3month" className="btn-timeframe">3 Months</RadioButton>
+            <RadioButton value="1year" className="btn-timeframe">1 Year</RadioButton>
+            <RadioButton value="3years" className="btn-timeframe">3 Years</RadioButton>
+          </RadioGroup>
         </div>
       </div>
     );
