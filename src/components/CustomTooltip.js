@@ -27,7 +27,7 @@ class CustomTooltip extends React.Component {
             <p className="label-price">${this.state.tooltipPrice}</p>
           </div>
         );
-      }      
+      }
     }
     return null;
   }
