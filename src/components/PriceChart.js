@@ -97,7 +97,9 @@ class PriceChart extends React.Component {
               tickFormatter={this.priceFormatter}
               stroke="#808080" />
             <CartesianGrid strokeDasharray="2 2" />
-            <Tooltip content={<CustomTooltip />}/>
+            <Tooltip
+              content={<CustomTooltip price={this.state.priceData}/>}
+              price={this.state.priceData} />
             <Area
               type="monotone"
               dataKey="price"
@@ -149,7 +151,6 @@ class PriceChart extends React.Component {
       </div>
     );
   }
-
 }
 
 export default PriceChart;
