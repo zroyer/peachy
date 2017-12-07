@@ -6,16 +6,12 @@
   font-size: 4em;
 }
 
-.last-updated-info {
-  font-size: 0.75em;
-  color: #808080;
-}
-
 a.link {
   text-decoration: none;
+  color: none;
 }
 
 span.peach {
-  top: 2px;
+  top: 1px;
   position: relative;
 }
