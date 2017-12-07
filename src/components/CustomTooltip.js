@@ -4,7 +4,7 @@ import '../style/CustomTooltip.css';
 class CustomTooltip extends React.Component {
   render() {
     const { active, payload, label } = this.props;
-    if (active) {
+    if (active && payload) {
       return (
         <div className="custom-tooltip">
           <p className="label-date">{`${label}`}</p>

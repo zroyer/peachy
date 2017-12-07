@@ -48,13 +48,12 @@ class LivePrice extends React.Component {
         </div>
         <div className='last-updated-info'>
           Price updated <TimeAgo date={this.state.lastUpdated} unit="second" />
-          &nbsp;
           <a
             href="https://github.com/zroyer/peachy-btc-monitor"
             target="_blank"
             className="link"
             rel="noopener noreferrer">
-            <span role="img" className="peach" aria-labelledby="peach">🍑</span>
+            <span role="img" className="peach" aria-labelledby="peach">&nbsp;🍑</span>
           </a>
         </div>
       </div>
