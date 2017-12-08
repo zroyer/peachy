@@ -91,7 +91,7 @@ class PriceChart extends React.Component {
             <XAxis
               dataKey="date"
               tickLine={false}
-              tick={{ fontSize: 14, dx: 21, dy: -20 }}
+              tick={{ fontSize: 14, dx: 18, dy: -20 }}
               angle={-45}
               height={40}
               orientation="top"
@@ -125,7 +125,7 @@ class PriceChart extends React.Component {
             <RadioButton value="1month" className="btn-timeframe">1 Month</RadioButton>
             <RadioButton value="3month" className="btn-timeframe">3 Months</RadioButton>
             <RadioButton value="1year" className="btn-timeframe">1 Year</RadioButton>
-            <RadioButton value="3years" className="btn-timeframe">3 Years</RadioButton>
+            <RadioButton value="3year" className="btn-timeframe">3 Years</RadioButton>
           </RadioGroup>
         </div>
       </div>

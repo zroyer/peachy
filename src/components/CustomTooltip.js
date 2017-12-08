@@ -7,8 +7,8 @@ class CustomTooltip extends React.Component {
     if (active && payload) {
       return (
         <div className="custom-tooltip">
-          <p className="label-date">{`${label}`}</p>
-          <p className="label-price">${payload[0].value.toFixed(2)}</p>
+          <span className="label-date">{`${label}`}</span>
+          <span className="label-price">${payload[0].value.toFixed(2)}</span>
         </div>
       );
     }
