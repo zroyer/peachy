@@ -17,9 +17,6 @@ class PriceChart extends React.Component {
       selectedOption: '1month',
       url: baseUrl
     }
-
-    this.handleOptionChange.bind(this);
-    this.fetchPriceData.bind(this);
   }
 
   componentDidMount() {
@@ -39,14 +36,14 @@ class PriceChart extends React.Component {
     }
 
     this.setState({
-        selectedOption: selectedOption,
+        selectedOption,
         url: formattedUrl
     }, function() {
       this.fetchPriceData();
     });
   }
 
-  fetchPriceData() {
+  fetchPriceData = () => {
     fetch(this.state.url)
       .then(response => response.json())
       .then((priceDataRes) => {
@@ -68,7 +65,7 @@ class PriceChart extends React.Component {
 
   priceFormatter(price) {
     return (
-      '$'+(price/1000)+'k'
+      `${price/1000}k`
     );
   }
 
