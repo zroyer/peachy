@@ -11,4 +11,4 @@ Utilizes the [Coindesk API](https://github.com/nmn/react-timeago) to monitor the
 ## Local Use
 - Clone the repo
 - `cd` into the directory and then `npm start`
-- Head to `localhost:3000` to try it out!
+- Check it out at `localhost:3000`!
