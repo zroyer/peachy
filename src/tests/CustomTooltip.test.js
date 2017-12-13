@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import CustomTooltip from '../components/CustomTooltip';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<CustomTooltip />, div);
+describe('<CustomTooltip />', () => {
+  it('renders CustomTooltip', () => {
+    const wrapper = shallow(<CustomTooltip />);
+    expect(wrapper.length).toBe(1);
+  });
 });

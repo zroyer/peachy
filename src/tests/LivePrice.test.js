@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import LivePrice from '../components/LivePrice';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<LivePrice />, div);
+describe('<LivePrice />', () => {
+  it('renders LivePrice', () => {
+    const wrapper = shallow(<LivePrice />);
+    expect(wrapper.length).toBe(1);
+  });
 });

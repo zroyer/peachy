@@ -1,22 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import PriceChart from '../components/PriceChart';
 import { Radio } from 'antd';
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
 
-
-it('renders PriceChart without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<PriceChart />, div);
+describe('<PriceChart />', () => {
+  it('renders PriceChart', () => {
+    const wrapper = shallow(<PriceChart />);
+    expect(wrapper.length).toBe(1);
+  });
 });
 
-it('renders RadioGroup without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<RadioGroup />, div);
+describe('<PriceChart />', () => {
+  it('renders a RadioGroup component', () => {
+    const wrapper = shallow(<PriceChart />);
+    expect(wrapper.find(RadioGroup).length).toBe(1);
+  });
 });
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<RadioButton />, div);
+describe('<PriceChart />', () => {
+  it('renders a RadioButton component', () => {
+    const wrapper = shallow(<PriceChart />);
+    expect(wrapper.find(RadioButton).length).toBe(4);
+  });
 });
