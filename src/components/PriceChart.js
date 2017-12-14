@@ -14,7 +14,7 @@ class PriceChart extends React.Component {
     super(props);
     this.state = {
       priceData: null,
-      selectedOption: '1month',
+      selectedOption: '1months',
       url: baseUrl
     }
   }
@@ -25,15 +25,9 @@ class PriceChart extends React.Component {
 
   handleOptionChange = (e) => {
     let selectedOption = e.target.value;
-    let formattedUrl = baseUrl;
-
-    if (selectedOption === '3month') {
-      formattedUrl += `?start=${moment().subtract(3, 'months').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
-    } else if (selectedOption === '1year') {
-      formattedUrl += `?start=${moment().subtract(1, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
-    } else if (selectedOption === '3year') {
-      formattedUrl += `?start=${moment().subtract(3, 'year').format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
-    }
+    let num = e.target.value.split("")[0];
+    let base = e.target.value.split("").splice(1).join("");
+    let formattedUrl = baseUrl + `?start=${moment().subtract(num, base).format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
 
     this.setState({
         selectedOption,
@@ -119,8 +113,8 @@ class PriceChart extends React.Component {
             onChange={this.handleOptionChange}
             defaultValue={this.state.selectedOption}
             className="radio-timeframe">
-            <RadioButton value="1month" className="btn-timeframe">1 Month</RadioButton>
-            <RadioButton value="3month" className="btn-timeframe">3 Months</RadioButton>
+            <RadioButton value="1months" className="btn-timeframe">1 Month</RadioButton>
+            <RadioButton value="3months" className="btn-timeframe">3 Months</RadioButton>
             <RadioButton value="1year" className="btn-timeframe">1 Year</RadioButton>
             <RadioButton value="3year" className="btn-timeframe">3 Years</RadioButton>
           </RadioGroup>
