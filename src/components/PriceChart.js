@@ -15,7 +15,7 @@ class PriceChart extends React.Component {
     this.state = {
       priceData: null,
       selectedOption: '1months',
-      url: baseUrl
+      url: baseUrl,
     }
   }
 
@@ -27,7 +27,7 @@ class PriceChart extends React.Component {
     let selectedOption = e.target.value;
     let num = e.target.value.split("")[0];
     let base = e.target.value.split("").splice(1).join("");
-    let formattedUrl = baseUrl + `?start=${moment().subtract(num, base).format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`
+    let formattedUrl = baseUrl + `?start=${moment().subtract(num, base).format('YYYY-MM-DD')}&end=${moment().format('YYYY-MM-DD')}`;
 
     this.setState({
         selectedOption,
