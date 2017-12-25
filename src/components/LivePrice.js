@@ -8,11 +8,14 @@ class LivePrice extends React.Component {
     this.state = {
       price: 0,
       lastUpdated: null,
+      hasErrored: false,
+      isLoading: false,
     }
   }
 
   componentDidMount() {
     this.fetchPrice = async () => {
+      this.setState({ isLoading: true });
       const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
       fetch(url)
         .then(response => response.json())
@@ -20,10 +23,12 @@ class LivePrice extends React.Component {
           this.setState({
             price: priceRes.bpi.USD.rate_float,
             lastUpdated: priceRes.time.updated,
+            isLoading: false,
           })
         })
         .catch((e) => {
           console.log(e);
+          this.setState({ hasErrored: true });
         });
     }
 
@@ -38,6 +43,29 @@ class LivePrice extends React.Component {
   }
 
   render() {
+    if (this.state.hasErrored) {
+      return (
+        <div id="price-container">
+          <div className='price-headline'>
+            Sorry!
+          </div>
+          <p className='last-updated-info'>
+            There was an error fetching the price. Try again later!
+          </p>
+        </div>
+      )
+    }
+
+    if (this.state.isLoading) {
+      return (
+        <div id="price-container">
+          <div className='price-headline'>
+            Loading...
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div id="price-container">
         <div className='price-headline'>
