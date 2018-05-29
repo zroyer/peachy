@@ -1,5 +1,6 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
+import FadeIn from 'react-fade-in';
 import '../style/LivePrice.css';
 
 class LivePrice extends React.Component {
@@ -67,24 +68,26 @@ class LivePrice extends React.Component {
     }
 
     return (
-      <div id="price-container">
-        <div className='price-headline'>
-          {this.state.price.toLocaleString('us-EN', {
-            style: 'currency',
-            currency: 'USD',
-          })}
+      <FadeIn>
+        <div id="price-container">
+          <div className='price-headline'>
+            {this.state.price.toLocaleString('us-EN', {
+              style: 'currency',
+              currency: 'USD',
+            })}
+          </div>
+            <p className='last-updated-info'>
+              Price updated <TimeAgo date={this.state.lastUpdated} unit="second" />
+              <a
+                href="https://github.com/zroyer/peachy-btc-monitor"
+                target="_blank"
+                className="link"
+                rel="noopener noreferrer">
+                <span role="img" className="peach" aria-labelledby="peach">&nbsp;🍑</span>
+              </a>
+            </p>
         </div>
-        <p className='last-updated-info'>
-          Price updated <TimeAgo date={this.state.lastUpdated} unit="second" />
-          <a
-            href="https://github.com/zroyer/peachy-btc-monitor"
-            target="_blank"
-            className="link"
-            rel="noopener noreferrer">
-            <span role="img" className="peach" aria-labelledby="peach">&nbsp;🍑</span>
-          </a>
-        </p>
-      </div>
+      </FadeIn>
     );
   }
 }
