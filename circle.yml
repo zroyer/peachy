@@ -7,8 +7,3 @@ test:
   post:
     - npm install -g codeclimate-test-reporter
     - codeclimate-test-reporter < coverage/lcov.info
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: peachy-btc-monitor
